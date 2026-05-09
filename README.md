@@ -29,6 +29,10 @@ Key fields include:
 - Profit
 - Profit_Margin
 
+## Source and Credits
+This project uses the synthetic **“Airline Route Profitability”** dataset created by  
+**Emmanuel Lazaro** and published on Kaggle.  
+
 ## Data Preparation
 The main preparation steps included:
 - Importing and validating the CSV dataset.
@@ -40,9 +44,9 @@ The main preparation steps included:
 ## Data Quality Improvement
 A new field, `Route_Category_Clean`, was added because the original `Route_Category` used inconsistent category ranges.  
 The new field was created using `Flight_Hours` with clear non-overlapping rules:
-- Short Haul: < 3 hours
-- Middle Haul: 3 to < 6 hours
-- Long Haul: >= 6 hours
+- Short Haul: <= 3.5 hours
+- Middle Haul: 3.5 to <= 7.5 hours
+- Long Haul: > 7.5 hours
 
 ## Key Measures
 - Total Revenue
