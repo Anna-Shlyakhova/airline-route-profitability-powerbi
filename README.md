@@ -1,110 +1,82 @@
-# Airline Route Profitability Dashboard | Power BI
+# Airline Route Profitability Dashboard
 
 ## Project Overview
-This project explores airline route-level profitability for 2024 using a synthetic aviation dataset and a Power BI dashboard.  
-The dashboard combines commercial metrics (revenue, load factor, route mix) and financial metrics (profit and margin) to support route and pricing decisions.
+This Power BI project analyses airline route profitability across short-haul, medium-haul, and long-haul flights in 2024.  
+The goal was to evaluate route-level financial performance, identify loss-making routes, and highlight where high load factors do not translate into strong profitability.
 
 ## Business Objective
-- Measure route-level P&L performance (Revenue, Cost, Profit, Profit Margin %).
-- Identify profitable vs loss-making routes and flights.
-- Understand how load factor and seasonality impact profitability.
-- Provide a clear executive view for commercial and finance stakeholders.
+- Assess route profitability across the airline network.
+- Compare revenue, cost, profit, and profit margin by route and season.
+- Identify underperforming routes and route categories.
+- Support better pricing and cost-related decisions.
+
+## Tools Used
+- Power BI
+- Power Query
+- DAX
+- CSV dataset
 
 ## Dataset
-The dataset contains one year of flight-level and route-level data for DXB-based routes, including:[file:123]
-- Flight date, origin, destination and route.
-- Aircraft type and capacity.
-- Passengers and Load Factor %.
-- Ticket and ancillary revenue.
-- Operating cost breakdown (fuel, maintenance, crew, airport fees, etc.).
-- Total Revenue, Total Cost, Profit and Profit Margin %.
-
-> Note: The data is synthetic and created for learning and portfolio purposes only.[file:123]
-
-## Tools and Techniques
-- Power BI
-- Power Query for data cleaning and transformations
-- DAX for calculated measures and KPIs
-- Data modelling and dashboard design
+The project uses a flight-level dataset with operational and financial information for airline routes in 2024.  
+Key fields include:
+- Route
+- Destination
+- Flight_Hours
+- Season
+- Load_Factor
+- Total_Revenue
+- Total_Cost
+- Profit
+- Profit_Margin
 
 ## Data Preparation
-Key steps:
-- Loaded the CSV dataset into Power BI and validated data types.[file:123]
-- Built measures for:
-  - Total Revenue
-  - Total Cost
-  - Total Profit
-  - Profit Margin % = Profit / Total Revenue
-  - Avg Revenue per Pax
-  - Avg Load Factor %
-  - Route Revenue % (share of total revenue by route)
-- Aggregated flight-level data to route-level metrics for the main table.[file:123]
-- Created calculated columns for load factor buckets (Low, Medium, High) and seasonality (months / seasons).
+The main preparation steps included:
+- Importing and validating the CSV dataset.
+- Checking data types and business logic.
+- Creating DAX measures for revenue, cost, profit, and margin.
+- Building a clean route category field for reporting.
+- Designing an interactive dashboard with slicers and KPIs.
 
-## Dashboard Layout
+## Data Quality Improvement
+A new field, `Route_Category_Clean`, was added because the original `Route_Category` used inconsistent category ranges.  
+The new field was created using `Flight_Hours` with clear non-overlapping rules:
+- Short Haul: < 3 hours
+- Middle Haul: 3 to < 6 hours
+- Long Haul: >= 6 hours
 
-### Executive KPIs
-Top KPI cards show:
-- Avg Revenue per Pax
-- Avg Load Factor %
-- Total Flights
-- Unique Routes
-- Total Route Revenue
-- Total Route Profit
-- Overall Profit Margin %
-
-These give a quick at-a-glance view of network performance.
-
-### Route Profitability (P&L Summary)
-A detailed table presents:
-- Route
+## Key Measures
 - Total Revenue
+- Total Cost
 - Total Profit
 - Profit Margin %
-- Route Revenue %
 - Load Factor %
+- Loss-Making Flights %
+- Route Profitability by Category
 
-Conditional formatting highlights the most profitable and loss-making routes using a red–green colour scale.
-
-### Flights by Profitability
-A pie chart shows the split between profitable and loss-making flights (by count of flights), helping to understand the overall quality of the route network.[file:142][file:123]
-
-### Profit and Revenue by Load Factor
-A chart groups flights into load factor buckets (Low <70%, Medium 70–85%, High ≥85%) and compares Total Revenue and Total Profit.  
-This reveals how utilisation (LF) is linked to profitability.
-
-### Top 10 Routes by Profit
-A bar chart ranks the most profitable routes by Total Profit, highlighting key contributors to the airline’s financial performance.
-
-### Monthly Revenue and Profit Margin
-A combo chart shows:
-- Total Revenue by month (columns)
-- Profit Margin % by month (line)
-
-This exposes seasonality patterns and months with weaker profitability.
+## Dashboard Structure
+The dashboard includes:
+- KPI cards for Revenue, Profit, Profit Margin, and Load Factor
+- Route profitability table with conditional formatting
+- Monthly revenue and profit margin trend
+- Visual breakdown by route category
+- Slicers for Season and Route Category
 
 ## Key Insights
-Examples of insights that this dashboard supports:[file:142][file:123]
-- A relatively small number of routes generate a significant share of Total Profit and Revenue.
-- Some long-haul routes deliver high revenue but low or negative Profit due to high operating costs.
-- Flights with Low Load Factor are frequently loss-making, while High LF flights tend to be consistently profitable.
-- Certain months show both lower revenue and negative or very low Profit Margin %, suggesting strong seasonality and opportunities for capacity or pricing adjustments.
+- 2024: **~$575M** route revenue, **24% profit margin**, but **~35% of flights are loss-making**, so better **ticket pricing and cost management** are needed.
+- **Long-haul is weak:** average margin is **~16%**, with **SFO and LAX** at only **~3%** even in peak season.
+- **Medium-haul is the profit engine:** **FRA and SIN** deliver margins **above 45%**, while **LHR** is loss-making for most of the year and only slightly profitable in peak season.
+- **Short-haul risk:** **~35% of short-haul flights are unprofitable** despite load factors above **70%**.
 
-## Business Value
-For airline commercial and finance teams this type of dashboard can:
-- Provide a single view of network profitability at route level.
-- Prioritise routes for actions (grow, fix, reduce or exit).
-- Support discussions between Commercial, Network Planning and Finance using shared KPIs.
-- Encourage data-driven decisions around pricing, scheduling and capacity planning.
+## Business Impact
+This dashboard helps identify which routes are profitable and which are unprofitable.  
+It also shows that strong seat occupancy alone is not enough: route profitability depends on both pricing and cost structure.
 
-## Files in this Repository
-- `airline_route_profitability.pbix` – Power BI report file.
-- `data/airline_route_profitability.csv` – source dataset.
-- `images/aviation_route_profitability_2024.png` – main dashboard screenshot.
-- `images/route_profitability_table.png` – detailed P&L summary screenshot (optional).
-- `README.md` – this project documentation.
+## Files in This Repository
+- `README.md` — project documentation
+- `airline_route_profitability.pbix` — Power BI dashboard file
+- `airline_route_profitability.csv` — source dataset
+- `images/` — dashboard screenshots
 
 ## About Me
-I am a Commercial and Data Analyst based in Scotland with a background in aviation and travel.  
-I am interested in combining data analytics, finance and BI tools to support better commercial decisions. 
-This dashboard is part of my Power BI portfolio.
+I am a Junior Commercial Analyst with a strong interest in data analytics, finance, and Power BI.  
+This project is part of my analytics portfolio and reflects my focus on turning business data into clear, practical insights.
