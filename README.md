@@ -105,5 +105,6 @@ For airline commercial and finance teams this type of dashboard can:
 - `README.md` – this project documentation.
 
 ## About Me
-I am a Junior Commercial and Data Analyst based in Scotland with a background in aviation and travel.  
-I am interested in combining data analytics, finance and BI tools to support better commercial decisions. This dashboard is part of my Power BI portfolio.
+I am a Commercial and Data Analyst based in Scotland with a background in aviation and travel.  
+I am interested in combining data analytics, finance and BI tools to support better commercial decisions. 
+This dashboard is part of my Power BI portfolio.
